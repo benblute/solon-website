@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "11.1.2",
+    "@usedapp/core": "^0.4.7",
+    "lodash": "^4.17.21",
+    "next": "^11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-responsive": "^9.0.0-beta.4"
   },
   "devDependencies": {
     "eslint": "7.32.0",
