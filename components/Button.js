@@ -1,4 +1,4 @@
-export default function Button({text, onClick}) {
+export default function Button({text, onClick, empty}) {
   return (
     <div className="button" onClick={onClick}>
       <strong>{text}</strong>
@@ -7,7 +7,7 @@ export default function Button({text, onClick}) {
         .button {
           height: 56px;
           border-radius: 32px;
-          background: #b96215;
+          background: ${empty ? "none" : "#b96215"};
           display: flex;
           align-items: center;
           white-space: nowrap;
@@ -15,6 +15,7 @@ export default function Button({text, onClick}) {
           padding-right: 32px;
           cursor: pointer;
           transition: transform 250ms;
+          border: ${empty ? "2px solid white" : "none"};
         }
 
         .button:hover {

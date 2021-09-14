@@ -1,18 +1,74 @@
+import { useState } from 'react'
 import Head from 'next/head'
+import Image from 'next/image'
 import Title from '../components/Title'
 import Paragraph from '../components/Paragraph'
 import Button from '../components/Button'
 import Section from '../components/Section'
+import Spacer from '../components/Spacer'
 import { useMediaQuery } from 'react-responsive'
 
 export default function NFTs() {
-  const small = useMediaQuery({query: "(max-width: 880px)"})
+  const [name, setName] = useState("A")
 
   return (
     <main>
       <Head>
         <title>Solon - NFTs</title>
       </Head>
+
+      <div className="viewer">
+        <video
+          className="video"
+          playsInline loop muted autoPlay
+          src={"/liquids/" + name + ".mp4"}
+          poster={"/thumbnails/" + name + ".png"}
+        />
+        <Spacer width="24px" />
+        <div className="viewer-menu">
+          <div className="buttons">
+            <Button text="&#5176;" empty onClick={() => {
+              if (name.length > 1) {
+                setName(name.slice(0, -1))
+              }
+            }} />
+            <Spacer flexGrow="1" />
+            <Button text="Minimal" empty={name[0] !== "A"} onClick={() => {
+              if (name[0] !== "A") {
+                setName("A" + name.substring(1))
+              }
+            }} />
+            <Spacer width="24px" />
+            <Button text="Landscapes" empty={name[0] !== "B"} onClick={() => {
+              if (name[0] !== "B") {
+                setName("B" + name.substring(1))
+              }
+            }} />
+          </div>
+          <Title>{name}</Title>
+          <Paragraph>Owner: None</Paragraph>
+          <Spacer flexGrow="1" />
+          <div className="options">
+            <img src={"/thumbnails/" + name + "1.png"} onClick={() => {
+              if (name.length < 8) {
+                setName(name + "1")
+              }
+            }} />
+            <Spacer width="24px" />
+            <img src={"/thumbnails/" + name + "2.png"} onClick={() => {
+              if (name.length < 8) {
+                setName(name + "2")
+              }
+            }} />
+            <Spacer width="24px" />
+            <img src={"/thumbnails/" + name + "3.png"} onClick={() => {
+              if (name.length < 8) {
+                setName(name + "3")
+              }
+            }} />
+          </div>
+        </div>
+      </div>
 
       <Section image="/blob2.png">
         <Title>Why purchase a Solon NFT?</Title>
@@ -29,11 +85,6 @@ export default function NFTs() {
         </Paragraph>
       </Section>
 
-      <div className="viewer">
-        <div style={{background: "green"}} />
-        <div style={{background: "blue"}} />
-      </div>
-
       <Section image="/blob3.png" flip>
         <Title>What is the price of a Solon NFT and how many can you purchase?</Title>
         <Paragraph>The price of a single Solon NFT will be 0.06 ETH + GAS. Each Solon NFT purchased after your initial purchase will be 0.01 ETH on top of the base price (0.06 ETH + (0.01 ETH * your balance of Solon NFTs) + GAS). Users can purchase a maximum of 10 Solon NFTs.</Paragraph>
@@ -45,14 +96,45 @@ export default function NFTs() {
       <style jsx>{`
         .viewer {
           display: flex;
-          flex-direction: ${small ? "column" : "row"};
+        }
+
+        .video {
+          flex-basis: 0;
+          flex-grow: 1;
+          min-width: 0;
+          border-radius: 16px;
+        }
+
+        .viewer-menu {
+          flex-basis: 0;
+          flex-grow: 1;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .buttons {
+          display: flex;
+        }
+
+        .options {
+          display: ${name.length < 7 ? "flex" : "none"};
+        }
+
+        .options > img {
+          flex: 1;
+          min-width: 0;
+          object-fit: contain;
+          border-radius: 16px;
+          cursor: pointer;
         }
 
         li {
           background: url(/bullet.svg) no-repeat left top;
-          padding: 0px 0px 0px 32px;
+          padding: 4px 0px 0px 32px;
           list-style: none;
           transform: translate(-40px);
+          text-align: left;
         }
       `}</style>
     </main>
