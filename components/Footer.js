@@ -61,6 +61,7 @@ function Links() {
         <h4>Pages</h4>
         <Link href="/"><a>Home</a></Link>
         <Link href="/nfts"><a>NFTs</a></Link>
+        <Link href="https://medium.com/@solondefi?p=85ccc65320e2"><a>Docs</a></Link>
         <Link href="/swap"><a>Swap</a></Link>
         <Link href="/pool"><a>Pool</a></Link>
         <Link href="/governance"><a>Governance</a></Link>

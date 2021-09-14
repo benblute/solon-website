@@ -3,13 +3,10 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { DAppProvider } from '@usedapp/core'
-import { useRouter } from 'next/router'
 
 export default function App({Component, pageProps}) {
-  const router = useRouter()
-
-  if (router.isFallback) {
-    return "Loading..."
+  if (typeof window === 'undefined') {
+    return null
   }
 
   return (
