@@ -2,6 +2,7 @@ import Paragraph from './Paragraph'
 import Spacer from './Spacer'
 import Image from 'next/image'
 import Link from 'next/link'
+import Animate from './Animate'
 import { useMediaQuery } from 'react-responsive'
 
 export default function Footer() {
@@ -9,27 +10,25 @@ export default function Footer() {
 
   return (
     <footer>
-      <Spacer height="64px" />
-      <div className="container">
-        <Solon />
-        <Links />
-      </div>
-      <Spacer height="8px" />
-      <Paragraph>&copy; 2021 Solon Finance</Paragraph>
-      <Spacer height="8px" />
+      <Animate>
+        <Spacer height="64px" />
+        <div className="container">
+          <Solon />
+          <Links />
+        </div>
+        <Spacer height="8px" />
+        <Paragraph>&copy; 2021 Solon Finance</Paragraph>
+        <Spacer height="8px" />
 
-      <style jsx>{`
-        footer {
-          text-align: left;
-        }
-
-        .container {
-          background: #151F2B;
-          border-radius: 16px;
-          display: flex;
-          flex-direction: ${small ? "column" : "row"};
-        }
-      `}</style>
+        <style jsx>{`
+          .container {
+            background: #151F2B;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: ${small ? "column" : "row"};
+          }
+        `}</style>
+      </Animate>
     </footer>
   )
 }

@@ -6,6 +6,7 @@ import Paragraph from '../components/Paragraph'
 import Button from '../components/Button'
 import Section from '../components/Section'
 import Spacer from '../components/Spacer'
+import Animate from '../components/Animate'
 import { useMediaQuery } from 'react-responsive'
 
 export default function NFTs() {
@@ -18,29 +19,31 @@ export default function NFTs() {
         <title>Solon - NFTs</title>
       </Head>
 
-      {
-        small ? (
-          <>
-            <Video name={name} />
-            <Spacer height="24px" />
-            <Options name={name} setName={setName} />
-            <Spacer height="24px" />
-            <Menu name={name} setName={setName} />
-          </>
-        ) : (
-          <div className="viewer">
-            <div>
+      <Animate>
+        {
+          small ? (
+            <>
               <Video name={name} />
-            </div>
-            <Spacer width="24px" />
-            <div className="viewer-menu">
-              <Menu name={name} setName={setName} />
-              <Spacer flexGrow="1" />
+              <Spacer height="24px" />
               <Options name={name} setName={setName} />
+              <Spacer height="24px" />
+              <Menu name={name} setName={setName} />
+            </>
+          ) : (
+            <div className="viewer">
+              <div>
+                <Video name={name} />
+              </div>
+              <Spacer width="24px" />
+              <div className="viewer-menu">
+                <Menu name={name} setName={setName} />
+                <Spacer flexGrow="1" />
+                <Options name={name} setName={setName} />
+              </div>
             </div>
-          </div>
-        )
-      }
+          )
+        }
+      </Animate>
 
       <Section image="/blob2.png">
         <Title>Why purchase a Solon NFT?</Title>
@@ -62,8 +65,10 @@ export default function NFTs() {
         <Paragraph>The price of a single Solon NFT will be 0.06 ETH + GAS. Each Solon NFT purchased after your initial purchase will be 0.01 ETH on top of the base price (0.06 ETH + (0.01 ETH * your balance of Solon NFTs) + GAS). Users can purchase a maximum of 10 Solon NFTs.</Paragraph>
       </Section>
 
-      <Title>What are the funds from the NFT sale being used for?</Title>
-      <Paragraph>Of the ~100 ETH the sale of Solon NFTs will raise we&apos;re using 50% of the funds for an audit of our smart contracts. We are hiring a top tier auditor to ensure there are no security flaws in our contracts, and to have a notable outside firm validate our code. 25% of the funds will be used for purchasing and developing a decentralized Solon market (NFTs, Pools, and Exchanges) in a metaverse along with the Solon Boule. The remaining 25% will be used to fund other development expenses. There will be a 2.5% fee on secondary market sales, which will be used to fund in person events. Any remaining funds will go to the Solon governance pool for the community to vote on how best to use. There will be consistent public reports on how the funds raised from the sale are spent and every expense will be detailed.</Paragraph>
+      <Animate>
+        <Title>What are the funds from the NFT sale being used for?</Title>
+        <Paragraph>Of the ~100 ETH the sale of Solon NFTs will raise we&apos;re using 50% of the funds for an audit of our smart contracts. We are hiring a top tier auditor to ensure there are no security flaws in our contracts, and to have a notable outside firm validate our code. 25% of the funds will be used for purchasing and developing a decentralized Solon market (NFTs, Pools, and Exchanges) in a metaverse along with the Solon Boule. The remaining 25% will be used to fund other development expenses. There will be a 2.5% fee on secondary market sales, which will be used to fund in person events. Any remaining funds will go to the Solon governance pool for the community to vote on how best to use. There will be consistent public reports on how the funds raised from the sale are spent and every expense will be detailed.</Paragraph>
+      </Animate>
 
       <style jsx>{`
         .viewer {

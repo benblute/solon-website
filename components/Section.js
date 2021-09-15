@@ -1,12 +1,13 @@
 import Image from 'next/image'
-import Spacer from '../components/Spacer'
+import Spacer from './Spacer'
+import Animate from './Animate'
 import { useMediaQuery } from 'react-responsive'
 
 export default function Section({children, image, flip}) {
   const small = useMediaQuery({query: "(max-width: 880px)"})
 
   return small ? (
-    <>
+    <Animate>
       {children}
 
       <Spacer height="64px" />
@@ -23,9 +24,9 @@ export default function Section({children, image, flip}) {
           position: relative;
         }
       `}</style>
-    </>
+    </Animate>
   ) : (
-    <>
+    <Animate>
       {
         flip ? (
           <div className="container">
@@ -74,6 +75,6 @@ export default function Section({children, image, flip}) {
           align-items: center;
         }
       `}</style>
-    </>
+    </Animate>
   )
 }
