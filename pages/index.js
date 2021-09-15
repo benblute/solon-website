@@ -16,17 +16,17 @@ export default function Home() {
       </Section>
 
       <Section image="/swap.svg" flip>
-        <Title>Trade cryptocurrency simply, and efficiently</Title>
-        <Paragraph>The most competative rates in cryptocurrency trading. Switch between Ethereum and Polygon with the click of a button</Paragraph>
+        <Title>Trade cryptocurrency simply and efficiently</Title>
+        <Paragraph>The most competitive rates in cryptocurrency trading. Switch between Ethereum and Polygon with the click of a button</Paragraph>
       </Section>
 
       <Section image="/pool.svg">
         <Title>Optimize liquidity provision with the world’s most versatile AMM</Title>
-        <Paragraph>Control the level of impermanent loss, concentration, and the total number of assets within your pool in live time. Remove the educational barrier to entry for new users, enter any pool based on level of risk, and average APR. Direct preformance incentivization for managers, capatalize off of regulating pools for others while ensuring the best APR for users. Trade leveraged positions within liquidity pools (calls and puts)</Paragraph>
+        <Paragraph>Control the level of impermanent loss, concentration, and the total number of assets within your pool in live time. Remove the educational barrier to entry for new users, enter any pool based on level of risk and average APR. Direct performance incentivization for managers, capitalize off of regulating pools for others while ensuring the best APR for users. Trade leveraged positions within liquidity pools (calls and puts)</Paragraph>
       </Section>
 
       <Section image="/nfts.png" flip>
-        <Title>Buy, rent, and sell NFTs in our decentralized market place</Title>
+        <Title>Buy, rent, and sell NFTs in our decentralized marketplace</Title>
         <Paragraph>Trade NFTs without protocol fees. Rent NFTs without the need to put up collateral. Directly profit from your NFTs without the need to sell. Take advantage of metaverse advertising space. Host your venue in a developed metaverse space. Derive artwork from popular NFT collections. Be exposed to our community through our home page as an emerging new artist</Paragraph>
       </Section>
 
