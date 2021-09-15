@@ -19,6 +19,8 @@ export default function NFTs() {
         <title>Solon - NFTs</title>
       </Head>
 
+      <Spacer height="16px" />
+
       <Animate>
         {
           small ? (
@@ -44,6 +46,8 @@ export default function NFTs() {
           )
         }
       </Animate>
+
+      <Spacer height="64px" />
 
       <Section image="/blob2.png">
         <Title>Why purchase a Solon NFT?</Title>
