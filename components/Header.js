@@ -11,6 +11,8 @@ export default function Header() {
   const medium = useMediaQuery({query: "(max-width: 1120px)"})
   const small = useMediaQuery({query: "(max-width: 880px)"})
   const [menu, setMenu] = useState(false)
+  const router = useRouter()
+  router.events.on('routeChangeStart', () => setMenu(false))
 
   return (
     <header>
