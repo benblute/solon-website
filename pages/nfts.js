@@ -9,6 +9,7 @@ import Spacer from '../components/Spacer'
 import { useMediaQuery } from 'react-responsive'
 
 export default function NFTs() {
+  const small = useMediaQuery({query: "(max-width: 880px)"})
   const [name, setName] = useState("A")
 
   return (
@@ -17,58 +18,29 @@ export default function NFTs() {
         <title>Solon - NFTs</title>
       </Head>
 
-      <div className="viewer">
-        <video
-          className="video"
-          playsInline loop muted autoPlay
-          src={"/liquids/" + name + ".mp4"}
-          poster={"/thumbnails/" + name + ".png"}
-        />
-        <Spacer width="24px" />
-        <div className="viewer-menu">
-          <div className="buttons">
-            <Button text="&#5176;" empty onClick={() => {
-              if (name.length > 1) {
-                setName(name.slice(0, -1))
-              }
-            }} />
-            <Spacer flexGrow="1" />
-            <Button text="Minimal" empty={name[0] !== "A"} onClick={() => {
-              if (name[0] !== "A") {
-                setName("A" + name.substring(1))
-              }
-            }} />
+      {
+        small ? (
+          <>
+            <Video name={name} />
+            <Spacer height="24px" />
+            <Options name={name} setName={setName} />
+            <Spacer height="24px" />
+            <Menu name={name} setName={setName} />
+          </>
+        ) : (
+          <div className="viewer">
+            <div>
+              <Video name={name} />
+            </div>
             <Spacer width="24px" />
-            <Button text="Landscapes" empty={name[0] !== "B"} onClick={() => {
-              if (name[0] !== "B") {
-                setName("B" + name.substring(1))
-              }
-            }} />
+            <div className="viewer-menu">
+              <Menu name={name} setName={setName} />
+              <Spacer flexGrow="1" />
+              <Options name={name} setName={setName} />
+            </div>
           </div>
-          <Title>{name}</Title>
-          <Paragraph>Owner: None</Paragraph>
-          <Spacer flexGrow="1" />
-          <div className="options">
-            <img src={"/thumbnails/" + name + "1.png"} onClick={() => {
-              if (name.length < 8) {
-                setName(name + "1")
-              }
-            }} />
-            <Spacer width="24px" />
-            <img src={"/thumbnails/" + name + "2.png"} onClick={() => {
-              if (name.length < 8) {
-                setName(name + "2")
-              }
-            }} />
-            <Spacer width="24px" />
-            <img src={"/thumbnails/" + name + "3.png"} onClick={() => {
-              if (name.length < 8) {
-                setName(name + "3")
-              }
-            }} />
-          </div>
-        </div>
-      </div>
+        )
+      }
 
       <Section image="/blob2.png">
         <Title>Why purchase a Solon NFT?</Title>
@@ -98,35 +70,15 @@ export default function NFTs() {
           display: flex;
         }
 
-        .video {
+        .viewer > * {
           flex-basis: 0;
           flex-grow: 1;
           min-width: 0;
-          border-radius: 16px;
         }
 
         .viewer-menu {
-          flex-basis: 0;
-          flex-grow: 1;
-          min-width: 0;
           display: flex;
           flex-direction: column;
-        }
-
-        .buttons {
-          display: flex;
-        }
-
-        .options {
-          display: ${name.length < 7 ? "flex" : "none"};
-        }
-
-        .options > img {
-          flex: 1;
-          min-width: 0;
-          object-fit: contain;
-          border-radius: 16px;
-          cursor: pointer;
         }
 
         li {
@@ -138,5 +90,106 @@ export default function NFTs() {
         }
       `}</style>
     </main>
+  )
+}
+
+function Video({name}) {
+  return (
+    <>
+      <video
+        playsInline loop muted autoPlay
+        src={"/liquids/" + name + ".mp4"}
+        poster={"/thumbnails/" + name + ".png"}
+      />
+
+      <style jsx>{`
+        video {
+          border-radius: 16px;
+          width: 100%;
+        }
+      `}</style>
+    </>
+  )
+}
+
+function Menu({name, setName}) {
+  return (
+    <>
+      <div className="buttons">
+        <Button text="&#5176;" empty style={{marginBottom: 24}} onClick={() => {
+          if (name.length > 1) {
+            setName(name.slice(0, -1))
+          }
+        }} />
+
+        <Spacer flexGrow="1" />
+
+        <Button text="Minimal" empty={name[0] !== "A"} style={{marginLeft: 24, marginBottom: 24}} onClick={() => {
+          if (name[0] !== "A") {
+            setName("A" + name.substring(1))
+          }
+        }} />
+
+        <Button text="Landscapes" empty={name[0] !== "B"} style={{marginLeft: 24}} onClick={() => {
+          if (name[0] !== "B") {
+            setName("B" + name.substring(1))
+          }
+        }} />
+      </div>
+
+      <Title>{name}</Title>
+
+      <Paragraph>Owner: None</Paragraph>
+
+      <style jsx>{`
+        .buttons {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: right;
+        }
+      `}</style>
+    </>
+  )
+}
+
+function Options({name, setName}) {
+  return (
+    <div className="container">
+      <img src={"/thumbnails/" + name + "1.png"} onClick={() => {
+        if (name.length < 8) {
+          setName(name + "1")
+        }
+      }} />
+
+      <Spacer width="24px" />
+
+      <img src={"/thumbnails/" + name + "2.png"} onClick={() => {
+        if (name.length < 8) {
+          setName(name + "2")
+        }
+      }} />
+
+      <Spacer width="24px" />
+
+      <img src={"/thumbnails/" + name + "3.png"} onClick={() => {
+        if (name.length < 8) {
+          setName(name + "3")
+        }
+      }} />
+
+      <style jsx>{`
+        .container {
+          display: ${name.length < 7 ? "flex" : "none"};
+        }
+
+        img {
+          flex: 1;
+          min-width: 0;
+          object-fit: contain;
+          border-radius: 16px;
+          cursor: pointer;
+        }
+      `}</style>
+    </div>
   )
 }

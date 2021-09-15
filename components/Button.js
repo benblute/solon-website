@@ -1,6 +1,6 @@
-export default function Button({text, onClick, empty}) {
+export default function Button({text, onClick, empty, style}) {
   return (
-    <div className="button" onClick={onClick}>
+    <div className="button" onClick={onClick} style={style}>
       <strong>{text}</strong>
 
       <style jsx>{`
