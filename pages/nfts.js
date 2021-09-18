@@ -122,28 +122,32 @@ function Video({name}) {
 }
 
 function Menu({name, setName}) {
+  const tiny = useMediaQuery({query: "(max-width: 440px)"})
+
   return (
     <>
       <div className="buttons">
-        <Button text="&#5176;" empty style={{marginBottom: 24}} onClick={() => {
+        <Button text="&#5176;" empty style={{padding: "20px"}} onClick={() => {
           if (name.length > 1) {
             setName(name.slice(0, -1))
           }
         }} />
 
-        <Spacer flexGrow="1" />
+        <div className="neural-network">
+          <Button text="Minimal" empty={name[0] !== "A"} onClick={() => {
+            if (name[0] !== "A") {
+              setName("A" + name.substring(1))
+            }
+          }} />
 
-        <Button text="Minimal" empty={name[0] !== "A"} style={{marginLeft: 24, marginBottom: 24}} onClick={() => {
-          if (name[0] !== "A") {
-            setName("A" + name.substring(1))
-          }
-        }} />
+          <Spacer width="24px" height="24px" />
 
-        <Button text="Landscapes" empty={name[0] !== "B"} style={{marginLeft: 24}} onClick={() => {
-          if (name[0] !== "B") {
-            setName("B" + name.substring(1))
-          }
-        }} />
+          <Button text="Landscapes" empty={name[0] !== "B"} onClick={() => {
+            if (name[0] !== "B") {
+              setName("B" + name.substring(1))
+            }
+          }} />
+        </div>
       </div>
 
       <Title>{name}</Title>
@@ -153,8 +157,13 @@ function Menu({name, setName}) {
       <style jsx>{`
         .buttons {
           display: flex;
-          flex-wrap: wrap;
-          justify-content: right;
+          justify-content: space-between;
+        }
+
+        .neural-network {
+          display: flex;
+          flex-direction: ${tiny ? "column" : "row"};
+          align-items: flex-end;
         }
       `}</style>
     </>

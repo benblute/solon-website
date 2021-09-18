@@ -12,7 +12,7 @@ export default function Home() {
 
       <Section image="/blob1.png">
         <Title>A new type of <span className="orange">automated</span> market maker protocol</Title>
-        <Paragraph>Solon is working to create the world&apos;s largest decentralized ecosystem, including the world’s first AMM with the ability to fully mitigate impermanent loss.</Paragraph>
+        <Paragraph>Solon is working to create the world&apos;s largest decentralized ecosystem, including the world’s first automated market maker with the ability to fully mitigate impermanent loss.</Paragraph>
       </Section>
 
       <Section image="/swap.svg" flip>
