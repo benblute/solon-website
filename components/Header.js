@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
-import { useEthers } from '@usedapp/core'
 import Link from 'next/link'
 import Image from 'next/image'
 import Spacer from './Spacer'
 import Button from './Button'
+import { useMoralis } from 'react-moralis'
 
 export default function Header() {
   const medium = useMediaQuery({query: "(max-width: 1120px)"})
@@ -131,13 +131,52 @@ function SocialMedia() {
 }
 
 function ConnectToWallet() {
-  const { activateBrowserWallet, account, deactivate } = useEthers()
+  const [ popup, setPopup ] = useState(false)
+  const { authenticate, isAuthenticated, user, logout } = useMoralis()
+
+  const address = user ? user.get('ethAddress').slice(0, 6) + "..." + user.get('ethAddress').slice(38) : "..."
+  const message = "Click sign to verify this is your wallet. This will not use any gas."
 
   return (
-    <Button
-      text={account ? account.slice(0, 6) + "..." + account.slice(38) : "Connect to Wallet"}
-      onClick={account ? deactivate : activateBrowserWallet}
-    />
+    <>
+      <Button
+        text={isAuthenticated ? address : "Connect to Wallet"}
+        onClick={isAuthenticated ? logout : () => {setPopup(true)}}
+      />
+
+      {
+        popup ? (
+          <div className="popup" onClick={e => {if (e.target == e.currentTarget) setPopup(false)}}>
+            <div className="inner-popup" onClick={() => {}}>
+              <Button text="MetaMask" onClick={() => {authenticate({signingMessage: message})}} />
+              <Spacer height="16px" />
+              <Button text="WalletConnect" onClick={() => {authenticate({signingMessage: message, provider: "walletconnect"})}} />
+            </div>
+          </div>
+        ) : ""
+      }
+
+      <style jsx>{`
+        .popup {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1;
+        }
+
+        .inner-popup {
+          padding: 32px;
+          background: #151F2B;
+          border-radius: 16px;
+        }
+      `}</style>
+    </>
   )
 }
 

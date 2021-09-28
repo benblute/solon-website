@@ -10,6 +10,7 @@ export default function Button({text, onClick, empty, style}) {
           background: ${empty ? "none" : "#b96215"};
           display: flex;
           align-items: center;
+          justify-content: center;
           white-space: nowrap;
           padding-left: 32px;
           padding-right: 32px;

@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { DAppProvider } from '@usedapp/core'
+import { MoralisProvider } from 'react-moralis'
 
 export default function App({Component, pageProps}) {
   if (typeof window === 'undefined') {
@@ -10,7 +10,7 @@ export default function App({Component, pageProps}) {
   }
 
   return (
-    <DAppProvider>
+    <MoralisProvider appId="3wPikVhOhIomYvVcOxFtZIfHRTl1NW4wY2qX1mTS" serverUrl="https://twebye0t2um2.moralishost.com:2053/server">
       <center>
         <div className="container">
           <Head>
@@ -30,6 +30,6 @@ export default function App({Component, pageProps}) {
           }
         `}</style>
       </center>
-    </DAppProvider>
+    </MoralisProvider>
   )
 }
