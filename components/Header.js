@@ -132,15 +132,16 @@ function SocialMedia() {
 
 function ConnectToWallet() {
   const [ popup, setPopup ] = useState(false)
-  const { authenticate, isAuthenticated, user, logout } = useMoralis()
+  const { isAuthenticated, isWeb3Enabled, user, logout } = useMoralis()
 
-  const address = user ? user.get('ethAddress').slice(0, 6) + "..." + user.get('ethAddress').slice(38) : "..."
-  const message = "Click sign to verify this is your wallet. This will not use any gas."
+  if (isAuthenticated && !isWeb3Enabled) {
+      logout()
+  }
 
   return (
     <>
       <Button
-        text={isAuthenticated ? address : "Connect to Wallet"}
+        text={isAuthenticated ? user.get('ethAddress').slice(0, 6) + "..." + user.get('ethAddress').slice(38) : "Connect to Wallet"}
         onClick={isAuthenticated ? logout : () => {setPopup(true)}}
       />
 
@@ -148,9 +149,9 @@ function ConnectToWallet() {
         popup ? (
           <div className="popup" onClick={e => {if (e.target == e.currentTarget) setPopup(false)}}>
             <div className="inner-popup" onClick={() => {}}>
-              <Button text="MetaMask" onClick={() => {authenticate({signingMessage: message})}} />
+              <WalletButton text="MetaMask" setPopup={setPopup} />
               <Spacer height="16px" />
-              <Button text="WalletConnect" onClick={() => {authenticate({signingMessage: message, provider: "walletconnect"})}} />
+              <WalletButton text="WalletConnect" provider="walletconnect" setPopup={setPopup} />
             </div>
           </div>
         ) : ""
@@ -177,6 +178,18 @@ function ConnectToWallet() {
         }
       `}</style>
     </>
+  )
+}
+
+function WalletButton({text, provider, setPopup}) {
+  const { authenticate, enableWeb3 } = useMoralis()
+
+  return (
+    <Button text={text} onClick={() => {
+      authenticate({signingMessage: "Click sign to verify this is your wallet. This will not use any gas.", provider: provider})
+      enableWeb3({provider: provider})
+      setPopup(false)
+    }} />
   )
 }
 
