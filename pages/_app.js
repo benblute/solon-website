@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { MoralisProvider } from 'react-moralis'
+import { useState, useEffect } from 'react'
 
 export default function App({Component, pageProps}) {
   if (typeof window === 'undefined') {
@@ -18,18 +19,18 @@ export default function App({Component, pageProps}) {
           </Head>
 
           <Header />
-          <Component {...pageProps} />
+          <Component {...pageProps} web3={web3} />
           <Footer />
         </div>
-
-        <style jsx>{`
-          .container {
-            max-width: 1200px;
-            margin-left: 5%;
-            margin-right: 5%;
-          }
-        `}</style>
       </center>
+
+      <style jsx>{`
+        .container {
+          max-width: 1200px;
+          margin-left: 5%;
+          margin-right: 5%;
+        }
+      `}</style>
     </MoralisProvider>
   )
 }

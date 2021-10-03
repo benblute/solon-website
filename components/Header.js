@@ -132,11 +132,7 @@ function SocialMedia() {
 
 function ConnectToWallet() {
   const [ popup, setPopup ] = useState(false)
-  const { isAuthenticated, isWeb3Enabled, user, logout } = useMoralis()
-
-  if (isAuthenticated && !isWeb3Enabled) {
-      logout()
-  }
+  const { isAuthenticated, user, logout } = useMoralis()
 
   return (
     <>
@@ -148,7 +144,7 @@ function ConnectToWallet() {
       {
         popup ? (
           <div className="popup" onClick={e => {if (e.target == e.currentTarget) setPopup(false)}}>
-            <div className="inner-popup" onClick={() => {}}>
+            <div className="inner-popup">
               <WalletButton text="MetaMask" setPopup={setPopup} />
               <Spacer height="16px" />
               <WalletButton text="WalletConnect" provider="walletconnect" setPopup={setPopup} />
@@ -187,7 +183,6 @@ function WalletButton({text, provider, setPopup}) {
   return (
     <Button text={text} onClick={() => {
       authenticate({signingMessage: "Click sign to verify this is your wallet. This will not use any gas.", provider: provider})
-      enableWeb3({provider: provider})
       setPopup(false)
     }} />
   )

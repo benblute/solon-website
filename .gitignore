@@ -14,8 +14,6 @@
 
 # production
 /build
-/public/liquids
-/public/thumbnails
 
 # misc
 .DS_Store

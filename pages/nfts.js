@@ -9,13 +9,12 @@ import Spacer from '../components/Spacer'
 import Animate from '../components/Animate'
 import { useMediaQuery } from 'react-responsive'
 import { useMoralis } from 'react-moralis'
-
-const ABI = [ { "anonymous": false, "inputs": [ { "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "approved", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "tokenId", "type": "uint256" } ], "name": "Approval", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "operator", "type": "address" }, { "indexed": false, "internalType": "bool", "name": "approved", "type": "bool" } ], "name": "ApprovalForAll", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": true, "internalType": "address", "name": "previousOwner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "newOwner", "type": "address" } ], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": true, "internalType": "address", "name": "from", "type": "address" }, { "indexed": true, "internalType": "address", "name": "to", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "tokenId", "type": "uint256" } ], "name": "Transfer", "type": "event" }, { "inputs": [ { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" } ], "name": "approve", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "disableWhitelist", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "uint256", "name": "number", "type": "uint256" } ], "name": "mint", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [ { "internalType": "uint256", "name": "tokenId", "type": "uint256" }, { "internalType": "string", "name": "name", "type": "string" } ], "name": "rename", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [], "name": "renounceOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" } ], "name": "safeTransferFrom", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" }, { "internalType": "bytes", "name": "_data", "type": "bytes" } ], "name": "safeTransferFrom", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "operator", "type": "address" }, { "internalType": "bool", "name": "approved", "type": "bool" } ], "name": "setApprovalForAll", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "newBaseURI", "type": "string" } ], "name": "setBaseURI", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "uint256", "name": "newLimit", "type": "uint256" } ], "name": "setLimit", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" } ], "name": "transferFrom", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "newOwner", "type": "address" } ], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address[]", "name": "addresses", "type": "address[]" } ], "name": "updateEarlyAdopterWhitelist", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address[]", "name": "addresses", "type": "address[]" } ], "name": "updateWhitelist", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "amountMinted", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "owner", "type": "address" } ], "name": "balanceOf", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "baseURI", "outputs": [ { "internalType": "string", "name": "", "type": "string" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "earlyAdopterWhitelist", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "uint256", "name": "tokenId", "type": "uint256" } ], "name": "getApproved", "outputs": [ { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "address", "name": "operator", "type": "address" } ], "name": "isApprovedForAll", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "limit", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "maxSupply", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "name", "outputs": [ { "internalType": "string", "name": "", "type": "string" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [ { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "uint256", "name": "tokenId", "type": "uint256" } ], "name": "ownerOf", "outputs": [ { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "bytes4", "name": "interfaceId", "type": "bytes4" } ], "name": "supportsInterface", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "symbol", "outputs": [ { "internalType": "string", "name": "", "type": "string" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "uint256", "name": "index", "type": "uint256" } ], "name": "tokenByIndex", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "uint256", "name": "index", "type": "uint256" } ], "name": "tokenOfOwnerByIndex", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "uint256", "name": "tokenId", "type": "uint256" } ], "name": "tokenURI", "outputs": [ { "internalType": "string", "name": "", "type": "string" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalSupply", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "whitelist", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "whitelistDisabled", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" } ]
+import abi from '../json/solonNftsAbi.json'
+import nftData from '../json/nftDataByName.json'
 
 export default function NFTs() {
   const small = useMediaQuery({query: "(max-width: 880px)"})
   const [name, setName] = useState("A")
-  const { isAuthenticated, isWeb3Enabled } = useMoralis()
 
   return (
     <main>
@@ -51,14 +50,9 @@ export default function NFTs() {
         }
       </Animate>
 
-      {
-        isAuthenticated && isWeb3Enabled ? (
-          <>
-            <Spacer height="24px" />
-            <Mint />
-          </>
-        ) : ""
-      }
+      <Spacer height="24px" />
+
+      <Mint />
 
       <Spacer height="64px" />
 
@@ -120,8 +114,8 @@ function Video({name}) {
     <>
       <video
         playsInline loop muted autoPlay
-        src={"/liquids/" + name + ".mp4"}
-        poster={"/thumbnails/" + name + ".png"}
+        src={"https://arweave.net/tTgxSCbD8Ws30IrW0BX-_uml3wDdSjYa0csu8W0BqPw/" + name + ".mp4"}
+        poster={"https://arweave.net/riAF7gZb7uOdqIfvWm8xLORIej4c-CwI5RlYihCvseY/" + name + ".png"}
       />
 
       <style jsx>{`
@@ -136,6 +130,22 @@ function Video({name}) {
 
 function Menu({name, setName}) {
   const tiny = useMediaQuery({query: "(max-width: 440px)"})
+
+  const includeDetails = name in nftData
+
+  const length = (9 - name.length) * 5
+  const solon = includeDetails ? nftData[name].solon : ""
+  const [owner, setOwner] = useState("...")
+
+  const { Moralis } = useMoralis()
+
+  useEffect(async function() {
+    const web3 = await Moralis.enable()
+    const contract = new web3.eth.Contract(abi, "0xb65Cf1744C9D041B475d3781F498331eF769aD98")
+    if (includeDetails) {
+      setOwner(await contract.methods.ownerOf(nftData[name].tokenId).call())
+    }
+  })
 
   return (
     <>
@@ -165,7 +175,19 @@ function Menu({name, setName}) {
 
       <Title>{name}</Title>
 
-      <Paragraph>Owner: None</Paragraph>
+      <Paragraph>
+        {
+          includeDetails ? (
+            <>
+              Length: {length} seconds
+              <br />
+              Solon: {solon} tokens
+              <br />
+              Owner: {owner}
+            </>
+          ) : "Details not currently available"
+        }
+      </Paragraph>
 
       <style jsx>{`
         .buttons {
@@ -184,9 +206,10 @@ function Menu({name, setName}) {
 }
 
 function Options({name, setName}) {
+  const url = "https://arweave.net/riAF7gZb7uOdqIfvWm8xLORIej4c-CwI5RlYihCvseY/"
   return (
     <div className="container">
-      <img src={"/thumbnails/" + name + "1.png"} onClick={() => {
+      <img src={url + name + "1.png"} onClick={() => {
         if (name.length < 8) {
           setName(name + "1")
         }
@@ -194,7 +217,7 @@ function Options({name, setName}) {
 
       <Spacer width="24px" />
 
-      <img src={"/thumbnails/" + name + "2.png"} onClick={() => {
+      <img src={url + name + "2.png"} onClick={() => {
         if (name.length < 8) {
           setName(name + "2")
         }
@@ -202,7 +225,7 @@ function Options({name, setName}) {
 
       <Spacer width="24px" />
 
-      <img src={"/thumbnails/" + name + "3.png"} onClick={() => {
+      <img src={url + name + "3.png"} onClick={() => {
         if (name.length < 8) {
           setName(name + "3")
         }
@@ -231,14 +254,39 @@ function Options({name, setName}) {
 }
 
 function Mint() {
+  const { Moralis, isAuthenticated, user } = useMoralis()
+
+  if (!isAuthenticated) {
+    return (
+      <>
+        <div className="container">
+          <center>
+            <p>Connect your wallet to mint NFTs</p>
+          </center>
+        </div>
+
+        <style jsx>{`
+          .container {
+            background: #151F2B;
+            border-radius: 16px;
+            padding: 24px;
+          }
+
+          p {
+            opacity: 0.8;
+          }
+        `}</style>
+      </>
+    )
+  }
+
   const [amount, setAmount] = useState("")
-  const [amountMinted, setAmountMinted] = useState(0)
-  const [totalSupply, setTotalSupply] = useState(0)
+  const [amountMinted, setAmountMinted] = useState("...")
+  const [totalSupply, setTotalSupply] = useState("...")
 
-  const { web3, user } = useMoralis()
-  const contract = new web3.eth.Contract(ABI, "0xb65Cf1744C9D041B475d3781F498331eF769aD98")
-
-  useEffect(async function() {
+  useEffect(async () => {
+    const web3 = await Moralis.enable()
+    const contract = new web3.eth.Contract(abi, "0xb65Cf1744C9D041B475d3781F498331eF769aD98")
     setAmountMinted(parseInt(await contract.methods.amountMinted(user.get('ethAddress')).call()))
     setTotalSupply(parseInt(await contract.methods.totalSupply().call()))
   })
@@ -251,7 +299,10 @@ function Mint() {
         <div className="container">
           <input type="number" placeholder="Amount" value={amount} onInput={e => setAmount(e.target.value)} />
           <Spacer width="24px" height="24px" />
-          <Button text="Mint" onClick={async function() {
+          <Button text="Mint" onClick={async () => {
+            const web3 = await Moralis.enable()
+            const contract = new web3.eth.Contract(abi, "0xb65Cf1744C9D041B475d3781F498331eF769aD98")
+            const amountMinted = parseInt(await contract.methods.amountMinted(user.get('ethAddress')).call())
             let value = 0
             for (let i = 0; i < amount; i++) {
               value += 60 + (amountMinted + i) * 10
