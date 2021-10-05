@@ -19,7 +19,7 @@ export default function App({Component, pageProps}) {
           </Head>
 
           <Header />
-          <Component {...pageProps} web3={web3} />
+          <Component {...pageProps} />
           <Footer />
         </div>
       </center>
