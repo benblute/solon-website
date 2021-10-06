@@ -72,8 +72,8 @@ export default function NFTs() {
       </Section>
 
       <Section image="/blob3.png" flip>
-        <Title>What is the price of a Solon NFT and how many can you purchase?</Title>
-        <Paragraph>The price of a single Solon NFT will be 0.06 ETH + GAS. Each Solon NFT purchased after your initial purchase will be an additional 0.01 ETH on top of the base price (0.06 ETH + (0.01 ETH * your balance of Solon NFTs) + GAS). Only whitelisted addresses can mint NFTs. Visit our discord for more information about the whitelist and minting limits.</Paragraph>
+        <Title>What is the price of a Solon NFT?</Title>
+        <Paragraph>The price of a single Solon NFT will be 0.06 ETH + GAS. Each Solon NFT purchased after your initial purchase will be an additional 0.01 ETH on top of the base price (0.06 ETH + (0.01 ETH * your balance of Solon NFTs) + GAS).</Paragraph>
       </Section>
 
       <Animate>
