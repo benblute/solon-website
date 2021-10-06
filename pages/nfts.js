@@ -177,7 +177,7 @@ function Menu({name, setName}) {
 
       <Paragraph>
         {
-          false ? (
+          includeDetails ? (
             <>
               Length: {length} seconds
               <br />
