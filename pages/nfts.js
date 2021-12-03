@@ -63,8 +63,8 @@ export default function NFTs() {
           <br /><br />
           <ul>
             <li>5% of the total supply of Solon will be distributed randomly to Solon NFT holders (there will be a function users can call at any point after our audit to withdraw the amount of Solon associated with their NFT)</li>
-            <li>Exclusive access to an actively managed liquidity pool controlled by the teams top researchers</li>
-            <li>Exclusive access to Solon in person events</li>
+            <li>Exclusive access to an actively managed liquidity pool controlled by the team&apos;s top researchers</li>
+            <li>Exclusive access to Solon in-person events</li>
             <li>Exclusive access to the Solon Boule in the metaverse</li>
             <li>Founders status in our ecosystem (@Boule)</li>
           </ul>
