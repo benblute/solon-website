@@ -61,9 +61,6 @@ function Links() {
         <Link href="/"><a>Home</a></Link>
         <Link href="/nfts"><a>NFTs</a></Link>
         <Link href="https://medium.com/@solondefi?p=85ccc65320e2"><a>Docs</a></Link>
-        <Link href="/swap"><a>Swap</a></Link>
-        <Link href="/pool"><a>Pool</a></Link>
-        <Link href="/governance"><a>Governance</a></Link>
       </div>
 
       <div className="column">
@@ -76,7 +73,6 @@ function Links() {
         <h4>Team</h4>
         <Link href="https://twitter.com/crypto__jesus_"><a>Max Lyman</a></Link>
         <Link href="https://twitter.com/benblute"><a>Ben Blute</a></Link>
-        <Link href="https://twitter.com/_benxit_"><a>Bennett Phillips</a></Link>
       </div>
 
       <style jsx>{`
