@@ -50,11 +50,7 @@ export default function NFTs() {
         }
       </Animate>
 
-      <Spacer height="24px" />
-
-      <Mint />
-
-      <Spacer height="64px" />
+      <Spacer height="32px" />
 
       <Section image="/blob2.png">
         <Title>Why purchase a Solon NFT?</Title>
@@ -250,118 +246,5 @@ function Options({name, setName}) {
         }
       `}</style>
     </div>
-  )
-}
-
-function Mint() {
-  const { Moralis, isAuthenticated, user } = useMoralis()
-
-  if (!isAuthenticated) {
-    return (
-      <>
-        <div className="container">
-          <center>
-            <p>Connect your wallet to mint NFTs</p>
-          </center>
-        </div>
-
-        <style jsx>{`
-          .container {
-            background: #151F2B;
-            border-radius: 16px;
-            padding: 24px;
-          }
-
-          p {
-            opacity: 0.8;
-          }
-        `}</style>
-      </>
-    )
-  }
-
-  const [amount, setAmount] = useState("")
-  const [amountMinted, setAmountMinted] = useState("...")
-  const [totalSupply, setTotalSupply] = useState("...")
-
-  useEffect(async () => {
-    const web3 = await Moralis.enable()
-    const contract = new web3.eth.Contract(abi, "0xb65Cf1744C9D041B475d3781F498331eF769aD98")
-    setAmountMinted(parseInt(await contract.methods.amountMinted(user.get('ethAddress')).call()))
-    setTotalSupply(parseInt(await contract.methods.totalSupply().call()))
-  })
-
-  const tiny = useMediaQuery({query: "(max-width: 440px)"})
-
-  return (
-    <>
-      <Animate>
-        <div className="container">
-          <input type="number" placeholder="Amount" value={amount} onInput={e => setAmount(e.target.value)} />
-          <Spacer width="24px" height="24px" />
-          <Button text="Mint" onClick={async () => {
-            const web3 = await Moralis.enable()
-            const contract = new web3.eth.Contract(abi, "0xb65Cf1744C9D041B475d3781F498331eF769aD98")
-            const amountMinted = parseInt(await contract.methods.amountMinted(user.get('ethAddress')).call())
-            let value = 0
-            for (let i = 0; i < amount; i++) {
-              value += 60 + (amountMinted + i) * 10
-            }
-            value = web3.utils.toWei(value.toString(), "finney")
-            await contract.methods.mint(amount)
-              .send({from: user.get("ethAddress"), value: value})
-              .then(receipt => {
-                console.log(receipt);
-                })
-              .catch(error => {
-                console.log(error);
-              })
-            }} />
-          <Spacer width="24px" height="24px" />
-          <div className="text">
-            <p>You have minted {amountMinted}</p>
-            <Spacer width="24px" height="24px" flexGrow="1" />
-            <p>{totalSupply} / 2036 total</p>
-          </div>
-        </div>
-      </Animate>
-
-      <style jsx>{`
-        .container {
-          background: #151F2B;
-          border-radius: 16px;
-          padding: 24px;
-          display: flex;
-          flex-wrap: wrap;
-          flex-direction: ${tiny ? "column" : "row"};
-        }
-
-        .text {
-          display: flex;
-          flex-grow: 1;
-        }
-
-        input {
-          background: #151F2B;
-          border: 2px solid white;
-          border-radius: 32px;
-          color: white;
-          outline: none;
-          text-align: center;
-          -moz-appearance: textfield;
-          height: 56px;
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-
-        p {
-          opacity: 0.8;
-        }
-      `}</style>
-    </>
   )
 }
