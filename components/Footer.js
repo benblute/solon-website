@@ -66,7 +66,7 @@ function Links() {
       <div className="column">
         <h4>Social Media</h4>
         <Link href="https://twitter.com/SolonDeFi"><a>Twitter</a></Link>
-        <Link href="https://discord.com/invite/NFHA2cgAYu"><a>Discord</a></Link>
+        <Link href="https://discord.gg/sQ9pcUyFbt"><a>Discord</a></Link>
       </div>
 
       <div className="column">
