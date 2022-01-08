@@ -67,15 +67,25 @@ export default function NFTs() {
         </Paragraph>
       </Section>
 
-      <Section image="/blob3.png" flip>
-        <Title>What is the price of a Solon NFT?</Title>
-        <Paragraph>The price of a single Solon NFT will be 0.06 ETH + GAS. Each Solon NFT purchased after your initial purchase will be an additional 0.01 ETH on top of the base price (0.06 ETH + (0.01 ETH * your balance of Solon NFTs) + GAS).</Paragraph>
-      </Section>
-
       <Animate>
         <Title>What are the funds from the NFT sale being used for?</Title>
-        <Paragraph>Of the ~100 ETH the sale of Solon NFTs will raise we&apos;re using 50% of the funds for an audit of our smart contracts. We are hiring a top tier auditor to ensure there are no security flaws in our contracts, and to have a notable outside firm validate our code. 25% of the funds will be used for purchasing and developing a decentralized Solon market (NFTs, Pools, and Exchanges) in a metaverse along with the Solon Boule. The remaining 25% will be used to fund other development expenses. There will be a 2.5% fee on secondary market sales, which will be used to fund in person events. Any remaining funds will go to the Solon governance pool for the community to vote on how best to use. There will be consistent public reports on how the funds raised from the sale are spent and every expense will be detailed.</Paragraph>
+        <Paragraph>We are hiring Trail of Bits to audit our code and ensure there are no security flaws in our smart contracts. This audit will cost $320,000. All of the remaining funds are managed by the Boule: a DAO that allows every Solon NFT holder to vote on how the money is spent. You can vote to use it for investments, marketing, and eventually, dividends payments to NFT holders.</Paragraph>
       </Animate>
+
+      <Section image="/blob3.png" flip>
+        <Title>Current DAO holdings</Title>
+        <Paragraph>
+          <ul>
+            <li>260 Solon NFTs</li>
+            <li>ETH Balance: 2.6</li>
+            <li>5 Strong Nodes: <a href="https://strongblock.com/">[Link]</a></li>
+            <li>Bored Ape Yacht Club (BAYC) #9658: <a href="https://opensea.io/assets/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/9658">[Link]</a></li>
+            <li>Doodle #5249: <a href="https://opensea.io/assets/0x8a90cab2b38dba80c64b7734e58ee1db38b8992e/5249">[Link]</a></li>
+            <li>Mutant Ape Yacht Club (MAYC) #2303: <a href="https://opensea.io/assets/0x60e4d786628fea6478f785a6d7e704777c86a7c6/2303">[Link]</a></li>
+            <li>Pukenza #5249: <a href="https://opensea.io/assets/0x1e38e9ad28a526512af9b8689c50d91443b6c3db/5249">[Link]</a></li>
+          </ul>
+        </Paragraph>
+      </Section>
 
       <style jsx>{`
         .viewer {
