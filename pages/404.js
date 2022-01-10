@@ -16,8 +16,8 @@ export default function Error() {
 
       <style jsx>{`
         main {
-          margin-top: 80px;
-          margin-bottom: 160px;
+          margin-top: 160px;
+          margin-bottom: 320px;
         }
       `}</style>
     </main>

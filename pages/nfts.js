@@ -67,12 +67,16 @@ export default function NFTs() {
         </Paragraph>
       </Section>
 
+      <Spacer height="32px" />
+
       <Animate>
         <Title>What are the funds from the NFT sale being used for?</Title>
         <Paragraph>We are hiring Trail of Bits to audit our code and ensure there are no security flaws in our smart contracts. This audit will cost $320,000. All of the remaining funds are managed by the Boule: a DAO that allows every Solon NFT holder to vote on how the money is spent. You can vote to use it for investments, marketing, and eventually, dividends payments to NFT holders.</Paragraph>
       </Animate>
 
-      <Section image="/blob3.png" flip>
+      <Spacer height="32px" />
+
+      <Section image="/ape.png" flip>
         <Title>Current DAO holdings</Title>
         <Paragraph>
           <ul>

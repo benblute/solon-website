@@ -68,12 +68,9 @@ function Menu({style}) {
       <NavigationButton href="/" dot><strong>Home</strong></NavigationButton>
       <NavigationButton href="/nfts" dot><strong>NFTs</strong></NavigationButton>
       <NavigationButton href="https://medium.com/@solondefi" dot><strong>Docs</strong></NavigationButton>
-      <NavigationButton href="/swap" dot><strong>Swap</strong></NavigationButton>
-      <NavigationButton href="/pool" dot><strong>Pool</strong></NavigationButton>
-      <NavigationButton href="/governance" dot><strong>Governance</strong></NavigationButton>
-      <Spacer width="32px" />
+      <Spacer width="64px" />
       <SocialMedia />
-      <Spacer width="32px" />
+      <Spacer width="64px" />
       <ConnectToWallet />
 
       <style jsx>{`
