@@ -67,7 +67,7 @@ function Menu({style}) {
     <div className="container" style={style}>
       <NavigationButton href="/" dot><strong>Home</strong></NavigationButton>
       <NavigationButton href="/nfts" dot><strong>NFTs</strong></NavigationButton>
-      <NavigationButton href="https://medium.com/@solondefi?p=85ccc65320e2" dot><strong>Docs</strong></NavigationButton>
+      <NavigationButton href="https://medium.com/@solondefi" dot><strong>Docs</strong></NavigationButton>
       <NavigationButton href="/swap" dot><strong>Swap</strong></NavigationButton>
       <NavigationButton href="/pool" dot><strong>Pool</strong></NavigationButton>
       <NavigationButton href="/governance" dot><strong>Governance</strong></NavigationButton>
