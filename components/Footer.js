@@ -37,7 +37,7 @@ function Solon() {
   return (
     <div className="container">
       <Image src="/logo.png" width="150px" height="52px" />
-      <Paragraph>A new form of automated market maker that reinvents the way users deal with impermanent loss, the only risk in supplying liquidity</Paragraph>
+      <Paragraph>The future of decentralized finance</Paragraph>
 
       <style jsx>{`
         .container {
