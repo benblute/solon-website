@@ -31,7 +31,6 @@ export default function Error() {
             <>
               <Paragraph>Please read through this article before voting</Paragraph>
               <a href="https://www.benblute.com/posts/solon-token-distribution/" target="_blank">https://www.benblute.com/posts/solon-token-distribution/</a>
-              <Paragraph>Voting power: {voterData[user.get('ethAddress')] || 0}</Paragraph>
               <Spacer height="64px" />
               <Paragraph>NFT holders: 4.908%</Paragraph>
               <input type="checkbox" checked={nftHolders} onClick={e => setNftHolders(!nftHolders)} />
