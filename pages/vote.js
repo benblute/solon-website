@@ -20,7 +20,7 @@ export default function Error() {
   return (
     <main>
       <Head>
-        <title>Solon - Page not found</title>
+        <title>Solon - Vote</title>
       </Head>
 
       <center>
@@ -36,16 +36,16 @@ export default function Error() {
               <input type="checkbox" checked={nftHolders} onClick={e => setNftHolders(!nftHolders)} />
               <Spacer height="24px" />
               <Paragraph>Core developers: {(100 * coreDevelopersWeight / total).toFixed(2)}%</Paragraph>
-              <input type="number" value={coreDevelopersWeight} onInput={e => setCoreDevelopersWeight(parseFloat(e.target.value))} />
+              <input type="number" min="0" value={coreDevelopersWeight} onInput={e => setCoreDevelopersWeight(parseFloat(e.target.value))} />
               <Spacer height="24px" />
               <Paragraph>Miscellaneous: {(100 * miscellaneousWeight / total).toFixed(2)}%</Paragraph>
-              <input type="number" value={miscellaneousWeight} onInput={e => setMiscellaneousWeight(parseFloat(e.target.value))} />
+              <input type="number" min="0" value={miscellaneousWeight} onInput={e => setMiscellaneousWeight(parseFloat(e.target.value))} />
               <Spacer height="24px" />
               <Paragraph>Public sale: {(100 * publicSaleWeight / total).toFixed(2)}%</Paragraph>
-              <input type="number" value={publicSaleWeight} onInput={e => setPublicSaleWeight(parseFloat(e.target.value))} />
+              <input type="number" min="0" value={publicSaleWeight} onInput={e => setPublicSaleWeight(parseFloat(e.target.value))} />
               <Spacer height="24px" />
               <Paragraph>Users: {(100 * usersWeight / total).toFixed(2)}%</Paragraph>
-              <input type="number" value={usersWeight} onInput={e => setUsersWeight(parseFloat(e.target.value))} />
+              <input type="number" min="0" value={usersWeight} onInput={e => setUsersWeight(parseFloat(e.target.value))} />
               <Spacer height="64px" />
               <Button text="Submit" onClick={async () => {
                 var data = `616df967149d09cb13717e094aa9565eccc823fc:${nftHolders},${coreDevelopersWeight},${miscellaneousWeight},${publicSaleWeight},${usersWeight}`
