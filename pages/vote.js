@@ -29,8 +29,7 @@ export default function Error() {
         {
           isWeb3Enabled && isAuthenticated ? (
             <>
-              <Paragraph>Please read through this article before voting</Paragraph>
-              <a href="https://www.benblute.com/posts/solon-token-distribution/" target="_blank">https://www.benblute.com/posts/solon-token-distribution/</a>
+              <Paragraph>Enter your prefered token distribution into the boxes below. If your numbers add up to 100, they will match the percentages above each box. If your numbers do not add up to 100, they will be scaled up or down so that they do. Please read through this article for an explanation of what each category means: <a href="https://www.benblute.com/posts/solon-token-distribution/" target="_blank">https://www.benblute.com/posts/solon-token-distribution/</a></Paragraph>
               <Paragraph>Voting power: {voterData[web3.utils.toChecksumAddress(user.get('ethAddress'))] || 0}</Paragraph>
               <Spacer height="64px" />
               <Paragraph>NFT holders: 4.908%</Paragraph>
