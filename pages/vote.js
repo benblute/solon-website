@@ -11,10 +11,10 @@ export default function Error() {
   const { web3, isWeb3Enabled, isAuthenticated, user, setUserData } = useMoralis()
 
   const [nftHolders, setNftHolders] = useState(true)
-  const [coreDevelopersWeight, setCoreDevelopersWeight] = useState(1)
-  const [miscellaneousWeight, setMiscellaneousWeight] = useState(1)
-  const [publicSaleWeight, setPublicSaleWeight] = useState(1)
-  const [usersWeight, setUsersWeight] = useState(1)
+  const [coreDevelopersWeight, setCoreDevelopersWeight] = useState(8)
+  const [miscellaneousWeight, setMiscellaneousWeight] = useState(4)
+  const [publicSaleWeight, setPublicSaleWeight] = useState(20)
+  const [usersWeight, setUsersWeight] = useState(63.092)
 
   const total = (coreDevelopersWeight + miscellaneousWeight + publicSaleWeight + usersWeight) * 100 / 95.092
 
