@@ -31,10 +31,10 @@ export default function Error() {
             <>
               <Paragraph>Please read through this article before voting</Paragraph>
               <a href="https://www.benblute.com/posts/solon-token-distribution/" target="_blank">https://www.benblute.com/posts/solon-token-distribution/</a>
+              <Paragraph>Voting power: {voterData[web3.utils.toChecksumAddress(user.get('ethAddress'))] || 0}</Paragraph>
               <Spacer height="64px" />
               <Paragraph>NFT holders: 4.908%</Paragraph>
               <input type="checkbox" checked={nftHolders} onClick={e => setNftHolders(!nftHolders)} />
-              <Spacer height="24px" />
               <Paragraph>Core developers: {(100 * coreDevelopersWeight / total).toFixed(2)}%</Paragraph>
               <input type="number" min="0" value={coreDevelopersWeight} onInput={e => setCoreDevelopersWeight(parseFloat(e.target.value))} />
               <Spacer height="24px" />
@@ -47,7 +47,7 @@ export default function Error() {
               <Paragraph>Users: {(100 * usersWeight / total).toFixed(2)}%</Paragraph>
               <input type="number" min="0" value={usersWeight} onInput={e => setUsersWeight(parseFloat(e.target.value))} />
               <Spacer height="64px" />
-              <Button text="Submit" onClick={async () => {
+              <Button text="Submit" style={{width: '256px'}} onClick={async () => {
                 var data = `616df967149d09cb13717e094aa9565eccc823fc:${nftHolders},${coreDevelopersWeight},${miscellaneousWeight},${publicSaleWeight},${usersWeight}`
                 web3.eth.personal.sign(data, user.get('ethAddress')).then(signature => {
                   setUserData({
