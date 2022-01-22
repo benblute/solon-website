@@ -5,6 +5,7 @@ import Button from '../components/Button'
 import Spacer from '../components/Spacer'
 import { useMoralis } from 'react-moralis'
 import { useState } from 'react'
+import voterData from '../json/voterData.json'
 
 export default function Error() {
   const { web3, isWeb3Enabled, isAuthenticated, user, setUserData } = useMoralis()
@@ -30,7 +31,7 @@ export default function Error() {
             <>
               <Paragraph>Please read through this article before voting</Paragraph>
               <a href="https://www.benblute.com/posts/solon-token-distribution/" target="_blank">https://www.benblute.com/posts/solon-token-distribution/</a>
-              <br />
+              <Paragraph>Voting power: {voterData[user.get('ethAddress')] || 0}</Paragraph>
               <Spacer height="64px" />
               <Paragraph>NFT holders: 4.908%</Paragraph>
               <input type="checkbox" checked={nftHolders} onClick={e => setNftHolders(!nftHolders)} />
@@ -56,6 +57,11 @@ export default function Error() {
                   })
                 })
               }} />
+              {
+                user.get('signature') ? (
+                  <Paragraph>Vote submitted</Paragraph>
+                ) : ''
+              }
             </>
           ) : (
             <Paragraph>Connect your wallet to vote</Paragraph>
