@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Title from '../components/Title'
 import Paragraph from '../components/Paragraph'
 import Section from '../components/Section'
+import Animate from '../components/Animate'
 
 export default function Home() {
   return (
@@ -29,6 +30,17 @@ export default function Home() {
         <Title>Trade, rent, and fractionalize NFTs in our decentralized marketplace</Title>
         <Paragraph>Rent NFTs without the need to put up collateral, directly profit from your NFTs without the need to sell, take advantage of metaverse advertising space, host your venue in a developed metaverse space, and invest in popular NFT collections regardless of the floor price, all with zero protocol fees.</Paragraph>
       </Section>
+
+      <Animate>
+        <Paragraph>The Solon protocol will go live on July 1st following our audit with Trail of Bits on May 9th. If you’d like to receive alerts about the protocol or would like to become a beta tester sign up <a href="http://eepurl.com/hYGPh5">here</a>.</Paragraph>
+      </Animate>
+
+      <style jsx>{`
+        a {
+          color: lightblue;
+          text-decoration: underline;
+        }
+      `}</style>
     </main>
   )
 }
