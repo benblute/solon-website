@@ -60,19 +60,19 @@ function Links() {
         <h4>Pages</h4>
         <Link href="/"><a>Home</a></Link>
         <Link href="/nfts"><a>NFTs</a></Link>
-        <Link href="https://medium.com/@solondefi?p=85ccc65320e2"><a>Docs</a></Link>
+        <a target="_blank" href="https://solon.gitbook.io/docs">Docs</a>
       </div>
 
       <div className="column">
         <h4>Social Media</h4>
-        <Link href="https://twitter.com/SolonDeFi"><a>Twitter</a></Link>
-        <Link href="https://discord.gg/sQ9pcUyFbt"><a>Discord</a></Link>
+        <a target="_blank" href="https://twitter.com/solonlabs">Twitter</a>
+        <a target="_blank" href="https://discord.gg/sQ9pcUyFbt">Discord</a>
       </div>
 
       <div className="column">
         <h4>Team</h4>
-        <Link href="https://twitter.com/crypto__jesus_"><a>Max Lyman</a></Link>
-        <Link href="https://twitter.com/benblute"><a>Ben Blute</a></Link>
+        <a target="_blank" href="https://twitter.com/crypto__jesus_">Max Lyman</a>
+        <a target="_blank" href="https://twitter.com/benblute">Ben Blute</a>
       </div>
 
       <style jsx>{`

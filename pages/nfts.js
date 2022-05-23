@@ -4,11 +4,9 @@ import Image from 'next/image'
 import Title from '../components/Title'
 import Paragraph from '../components/Paragraph'
 import Button from '../components/Button'
-import Section from '../components/Section'
 import Spacer from '../components/Spacer'
 import Animate from '../components/Animate'
 import { useMediaQuery } from 'react-responsive'
-import { useMoralis } from 'react-moralis'
 import abi from '../json/solonNftsAbi.json'
 import nftData from '../json/nftDataByName.json'
 
@@ -22,7 +20,7 @@ export default function NFTs() {
         <title>Solon - NFTs</title>
       </Head>
 
-      <Spacer height="16px" />
+      <Spacer height="64px" />
 
       <Animate>
         {
@@ -50,46 +48,13 @@ export default function NFTs() {
         }
       </Animate>
 
-      <Spacer height="32px" />
-
-      <Section image="/blob2.png">
-        <Title>Why purchase a Solon NFT?</Title>
-        <Paragraph>
-          Aside from the amazing 1/1 artificial intelligence generated art pieces, Solon NFT holders will also receive the following:
-          <br /><br />
-          <ul>
-            <li>5% of the total supply of Solon will be distributed randomly to Solon NFT holders (there will be a function users can call at any point after our audit to withdraw the amount of Solon associated with their NFT)</li>
-            <li>Exclusive access to an actively managed liquidity pool controlled by the team&apos;s top researchers</li>
-            <li>Exclusive access to Solon in-person events</li>
-            <li>Exclusive access to the Solon Boule in the metaverse</li>
-            <li>Founders status in our ecosystem (@Boule)</li>
-          </ul>
-        </Paragraph>
-      </Section>
-
-      <Spacer height="32px" />
+      <Spacer height="88px" />
 
       <Animate>
-        <Title>What are the funds from the NFT sale being used for?</Title>
-        <Paragraph>We are hiring Trail of Bits to audit our code and ensure there are no security flaws in our smart contracts. This audit will cost $320,000. All of the remaining funds are managed by the Boule: a DAO that allows every Solon NFT holder to vote on how the money is spent. You can vote to use it for investments, marketing, and eventually, dividends payments to NFT holders.</Paragraph>
+        <Paragraph>The Solon NFTs were created to raise funds for an audit with Trail of Bits. For more information, visit our discord <a target="_blank" href="https://discord.gg/sQ9pcUyFbt">here</a>.</Paragraph>
       </Animate>
 
       <Spacer height="32px" />
-
-      <Section image="/ape.png" flip>
-        <Title>Current DAO holdings</Title>
-        <Paragraph>
-          <ul>
-            <li>260 Solon NFTs</li>
-            <li>ETH Balance: 2.6</li>
-            <li>5 Strong Nodes: <a href="https://strongblock.com/">[Link]</a></li>
-            <li>Bored Ape Yacht Club (BAYC) #9658: <a href="https://opensea.io/assets/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/9658">[Link]</a></li>
-            <li>Doodle #5249: <a href="https://opensea.io/assets/0x8a90cab2b38dba80c64b7734e58ee1db38b8992e/5249">[Link]</a></li>
-            <li>Mutant Ape Yacht Club (MAYC) #2303: <a href="https://opensea.io/assets/0x60e4d786628fea6478f785a6d7e704777c86a7c6/2303">[Link]</a></li>
-            <li>Pukenza #5249: <a href="https://opensea.io/assets/0x1e38e9ad28a526512af9b8689c50d91443b6c3db/5249">[Link]</a></li>
-          </ul>
-        </Paragraph>
-      </Section>
 
       <style jsx>{`
         .viewer {
@@ -107,12 +72,9 @@ export default function NFTs() {
           flex-direction: column;
         }
 
-        li {
-          background: url(/bullet.svg) no-repeat left top;
-          padding: 4px 0px 0px 32px;
-          list-style: none;
-          transform: translate(-40px);
-          text-align: left;
+        a {
+          color: lightblue;
+          text-decoration: underline;
         }
       `}</style>
     </main>
@@ -145,17 +107,6 @@ function Menu({name, setName}) {
 
   const length = (9 - name.length) * 5
   const solon = includeDetails ? nftData[name].solon : ""
-  const [owner, setOwner] = useState("...")
-
-  const { Moralis } = useMoralis()
-
-  useEffect(async function() {
-    const web3 = await Moralis.enable()
-    const contract = new web3.eth.Contract(abi, "0xb65Cf1744C9D041B475d3781F498331eF769aD98")
-    if (includeDetails) {
-      setOwner(await contract.methods.ownerOf(nftData[name].tokenId).call())
-    }
-  })
 
   return (
     <>
@@ -183,6 +134,8 @@ function Menu({name, setName}) {
         </div>
       </div>
 
+      <Spacer height="16px" />
+
       <Title>{name}</Title>
 
       <Paragraph>
@@ -192,8 +145,6 @@ function Menu({name, setName}) {
               Length: {length} seconds
               <br />
               Solon: {solon} tokens
-              <br />
-              Owner: {owner}
             </>
           ) : "Details not currently available"
         }
