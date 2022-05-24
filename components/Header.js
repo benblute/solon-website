@@ -67,7 +67,7 @@ function Menu({style}) {
     <div className="container" style={style}>
       <NavigationButton href="/" dot><strong>Home</strong></NavigationButton>
       <NavigationButton href="/nfts" dot><strong>NFTs</strong></NavigationButton>
-      <a target="_blank" href="https://solon.gitbook.io/docs"><strong>Docs</strong></a>
+      <NavigationButton target="_blank" href="https://solon.gitbook.io/docs"><strong>Docs</strong></NavigationButton>
       <Spacer width="64px" />
       <SocialMedia />
       <Spacer width="64px" />
@@ -117,17 +117,17 @@ function MenuButton({onClick}) {
 function SocialMedia() {
   return (
     <div style={{display: "flex"}}>
-      <a target="_blank" href="https://twitter.com/solonlabs">
+      <NavigationButton target="_blank" href="https://twitter.com/solonlabs">
         <svg width="24" height="24" fill="currentColor">
           <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
         </svg>
-      </a>
+      </NavigationButton>
 
-      <a target="_blank" href="https://discord.gg/sQ9pcUyFbt">
+      <NavigationButton target="_blank" href="https://discord.gg/sQ9pcUyFbt">
         <svg width="25" height="21" fill="currentColor">
           <path d="M23.6635 8.98897C22.6685 5.57012 21.5463 3.80361 21.5282 3.77192C21.4642 3.69385 19.8785 1.79619 16.0565 0.392578L15.5515 1.76758C17.3697 2.43535 18.6597 3.25 19.3691 3.77637C17.2511 3.1439 14.7315 2.75654 12.5 2.75654C10.2685 2.75654 7.74888 3.1439 5.63091 3.77637C6.34028 3.25005 7.63022 2.43535 9.44844 1.76758L8.94341 0.392578C5.12158 1.79619 3.53584 3.69385 3.47187 3.77192C3.45376 3.80361 2.33154 5.57012 1.33652 8.98897C0.377539 12.2837 0.0132324 16.9316 0 17.118C0.0854492 17.2516 2.05078 20.607 7.40688 20.607L8.7645 18.6411C7.24351 18.2373 5.79316 17.586 4.46553 16.7022L5.2772 15.4829C7.41904 16.9085 9.91665 17.6621 12.5 17.6621C15.0833 17.6621 17.581 16.9085 19.7228 15.4829L20.5345 16.7022C19.2069 17.586 17.7565 18.2373 16.2355 18.6411L17.5931 20.607C22.9492 20.607 24.9146 17.2516 25 17.118C24.9868 16.9316 24.6225 12.2837 23.6635 8.98897ZM9.11338 12.8211H7.64854V10.3797H9.11338V12.8211ZM17.3515 12.8211H15.8866V10.3797H17.3515V12.8211Z" />
         </svg>
-      </a>
+      </NavigationButton>
 
       <style jsx>{`
         a {
@@ -198,12 +198,12 @@ function WalletButton({text, provider, setPopup}) {
   )
 }
 
-function NavigationButton({children, href, dot}) {
+function NavigationButton({children, href, dot, target}) {
   const router = useRouter()
   const selected = router.pathname === href
 
   return (
-    <Link href={href}>
+    <a target={target} href={href}>
       <div className="container">
         {children}
 
@@ -239,6 +239,6 @@ function NavigationButton({children, href, dot}) {
           }
         `}</style>
       </div>
-    </Link>
+    </a>
   )
 }

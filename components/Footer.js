@@ -10,25 +10,23 @@ export default function Footer() {
 
   return (
     <footer>
-      <Animate>
-        <Spacer height="64px" />
-        <div className="container">
-          <Solon />
-          <Links />
-        </div>
-        <Spacer height="8px" />
-        <Paragraph>&copy; 2021 Solon Finance</Paragraph>
-        <Spacer height="8px" />
+      <Spacer height="64px" />
+      <div className="container">
+        <Solon />
+        <Links />
+      </div>
+      <Spacer height="8px" />
+      <Paragraph>&copy; 2021 Solon Finance</Paragraph>
+      <Spacer height="8px" />
 
-        <style jsx>{`
-          .container {
-            background: #151F2B;
-            border-radius: 16px;
-            display: flex;
-            flex-direction: ${small ? "column" : "row"};
-          }
-        `}</style>
-      </Animate>
+      <style jsx>{`
+        .container {
+          background: #151F2B;
+          border-radius: 16px;
+          display: flex;
+          flex-direction: ${small ? "column" : "row"};
+        }
+      `}</style>
     </footer>
   )
 }
