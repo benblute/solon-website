@@ -15,7 +15,7 @@ export default function Home() {
       <div className="title">
         <Animate>
           <Title>Decentralized gasless transactions on Ethereum and layer 2s</Title>
-          <Paragraph>Launching Q3 2022</Paragraph>
+          <Paragraph>Launching fall 2022</Paragraph>
         </Animate>
       </div>
 
